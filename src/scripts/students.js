@@ -86,6 +86,8 @@ const students = [
 // ***** BEGINNING PRACTICE EXERCISE: STUDENT COMPONENTS ***** //
 
 const createStudentComponent = (name, subject, info, score) => {
+    // empty variable assigned on h1 in function
+    // iterates over the array and assigns class according to passing, or failing score.
     let studentClass;
         if (student.score >= 60) {
             studentClass = "passing";
@@ -104,8 +106,6 @@ const createStudentComponent = (name, subject, info, score) => {
 }
 
 const studentContainer = document.querySelector("#container");
-// empty variable assigned on h1 in function
-// iterates over the array and assigns class according to passing, or failing score.
     // executes the createStudentComponent function and for each object, assigns the value and populates to the DOM.
    for (student of students)
     studentContainer.innerHTML += createStudentComponent(
