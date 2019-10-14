@@ -72,6 +72,12 @@ const students = [
         subject: "History",
         info: "Needs to contribute to in-class discussions",
         score: 95
+    },
+    {
+        name: "Caroline Brownlee",
+        subject: "Life",
+        info: "Ain't so bad.",
+        score: 100
     }
 ]
 
@@ -79,11 +85,14 @@ const students = [
 
 // ***** BEGINNING PRACTICE EXERCISE: STUDENT COMPONENTS ***** //
 
-// Iterate the array of students, and apply the correct style to the h1 depending on the score of the student being below 60, or above it.
-
 const createStudentComponent = (name, subject, info, score) => {
-    // let studentClass;
-    // conditional if/else that sets value of student class
+    let studentClass;
+        if (student.score >= 60) {
+            studentClass = "passing";
+        } else {
+            studentClass = "failing";
+        }
+    
     return `
         <div class="student">
             <h1 class="${studentClass}">${name}</h1>
@@ -91,34 +100,21 @@ const createStudentComponent = (name, subject, info, score) => {
             <aside>${info}</aside>
             <aside>${score}</aside>
         </div>
-    `
+    ` 
 }
-
-// move if condition and studentClass up in the createStudentComponent move let studentClass up into student component 
 
 const studentContainer = document.querySelector("#container");
-let studentClass;
+// empty variable assigned on h1 in function
+// iterates over the array and assigns class according to passing, or failing score.
+    // executes the createStudentComponent function and for each object, assigns the value and populates to the DOM.
+   for (student of students)
+    studentContainer.innerHTML += createStudentComponent(
+        student.name,
+        student.subject,
+        student.info,
+        student.score
+    )
 
-for (const student of students) {
-    // let studentComponent = "";
-    if (student.score >= 60) {
-        studentClass = "passing";
-        studentContainer.innerHTML += createStudentComponent(
-            student.name,
-            student.subject,
-            student.info,
-            student.score
-        )
-    } else {
-        studentClass = "failing";
-        studentContainer.innerHTML += createStudentComponent(
-            student.name,
-            student.subject,
-            student.info,
-            student.score
-        )
-    }
-}
 
 
 //  ***** BEGINNING PRACTICE EXERCISE: ONE OBJECT TO RULE THEM ALL ***** //
