@@ -85,35 +85,35 @@ const students = [
 
 // ***** BEGINNING PRACTICE EXERCISE: STUDENT COMPONENTS ***** //
 
-const createStudentComponent = (name, subject, info, score) => {
-    // empty variable assigned on h1 in function
-    // iterates over the array and assigns class according to passing, or failing score.
-    let studentClass;
-        if (student.score >= 60) {
-            studentClass = "passing";
-        } else {
-            studentClass = "failing";
-        }
+// const createStudentComponent = (name, subject, info, score) => {
+//     // empty variable assigned on h1 in function
+//     // iterates over the array and assigns class according to passing, or failing score.
+//     let studentClass;
+//         if (student.score >= 60) {
+//             studentClass = "passing";
+//         } else {
+//             studentClass = "failing";
+//         }
     
-    return `
-        <div class="student">
-            <h1 class="${studentClass}">${name}</h1>
-            <section>${subject}</section>
-            <aside>${info}</aside>
-            <aside>${score}</aside>
-        </div>
-    ` 
-}
+//     return `
+//         <div class="student">
+//             <h1 class="${studentClass}">${name}</h1>
+//             <section>${subject}</section>
+//             <aside>${info}</aside>
+//             <aside>${score}</aside>
+//         </div>
+//     ` 
+// }
 
-const studentContainer = document.querySelector("#container");
-    // executes the createStudentComponent function and for each object, assigns the value and populates to the DOM.
-   for (student of students)
-    studentContainer.innerHTML += createStudentComponent(
-        student.name,
-        student.subject,
-        student.info,
-        student.score
-    )
+// const studentContainer = document.querySelector("#container");
+//     // executes the createStudentComponent function and for each object, assigns the value and populates to the DOM.
+//    for (student of students)
+//     studentContainer.innerHTML += createStudentComponent(
+//         student.name,
+//         student.subject,
+//         student.info,
+//         student.score
+//     )
 
 
 
@@ -122,3 +122,30 @@ const studentContainer = document.querySelector("#container");
 // Instead of defining four arguments for the createStudentComponent function, and then passing the individual properties when it is invoked, refactor the function to accept the entire object as a single argument.
 
 // Then refactor your string interpolation code to use the object properties.
+
+const createStudentComponent = (student) => {
+    // empty variable assigned on h1 in function
+    // iterates over the array and assigns class according to passing, or failing score.
+    let studentClass;
+    if (student.score >= 60) {
+            studentClass = "passing";
+        } else {
+            studentClass = "failing";
+        }
+    
+    return `
+        <div class="student">
+            <h1 class="${studentClass}">${student.name}</h1>
+            <section>${student.subject}</section>
+            <aside>${student.info}</aside>
+            <aside>${student.score}</aside>
+        </div>
+    ` 
+}
+
+const studentContainer = document.querySelector("#container");
+    // executes the createStudentComponent function and for each object, assigns the value and populates to the DOM.
+   for (student of students)
+    studentContainer.innerHTML += createStudentComponent(
+        student
+    )
